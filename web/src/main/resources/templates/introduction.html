@@ -195,16 +195,16 @@
 								<div class="iteminfo_freprice">
 									<div class="am-form-content address">
 										<select data-am-selected="">
-											<option value="a">浙江省</option>
-											<option value="b">湖北省</option>
+											<option value="a">南阳市</option>
+											<option value="b">北京市</option>
 										</select>
 										<select data-am-selected="">
-											<option value="a">温州市</option>
-											<option value="b">武汉市</option>
+											<option value="a">宛城区</option>
+											<option value="b">海淀区</option>
 										</select>
 										<select data-am-selected="">
-											<option value="a">瑞安区</option>
-											<option value="b">洪山区</option>
+											<option value="a">长江路</option>
+											<option value="b">长城大厦</option>
 										</select>
 									</div>
 									<div class="pay-logis">
@@ -263,6 +263,14 @@
 													</div>
 													<div class="theme-options">
 														<div class="cart-title number">数量</div>
+														<!--
+														追加增加数量和减少数量
+														-->
+														<div>
+															<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
+															<input id="text_box" name="" type="text" value="1" style="width:30px;" />
+															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
+														</div>
 													</div>
 
 													<div class="clear"></div>
@@ -335,7 +343,7 @@
 				</div>
 
 				<!--优惠套装-->
-				<div class="match">
+				<!--<div class="match">
 					<div class="match-title">优惠套装</div>
 					<div class="match-comment">
 						<ul class="like_list">
@@ -360,7 +368,7 @@
 						</ul>
 					</div>
 				</div>
-				<div class="clear"></div>
+				<div class="clear"></div>-->
 				
 							
 				<!-- introduce-->
@@ -1142,8 +1150,6 @@
 						<div class="footer">
 							<div class="footer-hd">
 								<p>
-									<a href="#">恒望科技</a>
-									<b>|</b>
 									<a href="#">商城首页</a>
 									<b>|</b>
 									<a href="#">支付宝</a>
@@ -1153,11 +1159,9 @@
 							</div>
 							<div class="footer-bd">
 								<p>
-									<a href="#">关于恒望</a>
 									<a href="#">合作伙伴</a>
 									<a href="#">联系我们</a>
 									<a href="#">网站地图</a>
-									<em>© 2015-2025 Hengwang.com 版权所有. 更多模板 <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></em>
 								</p>
 							</div>
 						</div>
@@ -1328,13 +1332,17 @@
 	</body>
 	<script type="application/javascript">
         $('#LikBuy').click(function(){
+			/*
 			var path_name='/eureka-web/order/addOrder';
+			 */
+			var path_name='/web/order/addOrder';
 			var categoryId = document.getElementById("categoryId").value;
 			var summoney = document.getElementById("price").value;
 
 			$.post(path_name,{categoryId:categoryId,summoney:summoney},function(result){
 				if(result.code==0){
-					alert("购买成功")
+					/*alert("购买成功")*/
+					window.location.href="http://localhost:8080/web/pay.html";
 				}else if(result.code==3){
 				    if(confirm("您还没有登录，去登录？")){
 				        window.location.href="http://localhost:8764/eureka-web/login.html";

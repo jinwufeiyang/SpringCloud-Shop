@@ -45,6 +45,8 @@ public class UserController{
         if(u.getPassword().equals(user.getPassword())){
             session.setAttribute("userId",u.getId());
             session.setAttribute("userName",u.getName());
+            session.setAttribute("tel",u.getPhone());
+            session.setAttribute("address",u.getAddress());
 
             Category category = categoryService.getCategory(1L);
             // 楼层

@@ -10,3 +10,6 @@ spring:
       label: master
 server:
   port: 8771
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

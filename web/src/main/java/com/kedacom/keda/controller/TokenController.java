@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * 基于ACCESS TOKEN的进行权限验证
@@ -40,7 +41,7 @@ public class TokenController {
     private TokenManager tokenManager;
 
     @PostMapping("/login")
-    public Result login (User user) {
+    public Result login (User user,HttpSession session) {
         Assert.notNull (user.getName(), "username can not be empty");
         Assert.notNull (user.getPassword(), "password can not be empty");
 
@@ -52,6 +53,8 @@ public class TokenController {
         }
         // 生成一个 token，保存用户登录状态
         TokenModel model = tokenManager.createToken (u.getId ());
+        session.setAttribute("userId",u.getId());
+        session.setAttribute("userName",u.getName());
         return ResultUtil.success(model);
     }
 

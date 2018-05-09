@@ -27,6 +27,9 @@ zuul:
     eureka-web: #单实例路由配置
       path: /web/**
       url: http://localhost:8080/eureka-web/
+    web-admin:
+      path: /admin/**
+      url: http://localhost:8080/web-admin/
 #Spring Security配置
 #security:
 #  user:

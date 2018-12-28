@@ -34,6 +34,7 @@
 * order-service:订单服务
 * user-service:用户服务
 * web:web服务
+* web-admin:admin服务
 ## 演示步骤
 - 1、开启Redis和MySQL服务
 - 2、分别启动：EurekaServerApplication、ApiGatewayApplication、ConfigServerGitApplication、CategoryApplication、OrderApplication、UserApplication、KedaApplication

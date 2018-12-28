@@ -6,6 +6,7 @@ import com.kedacom.commons.util.ResultUtil;
 import com.kedacom.keda.service.CategoryService;
 import com.kedacom.keda.service.UserService;
 import com.kedacom.user.model.User;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,15 @@ public class UserController{
 
     @Autowired CategoryService categoryService;
 
+    @PostMapping("/update")
+    @ResponseBody
+    public Result updateuser(User user,Model model,HttpSession session) {
+        User u = userService.updateuser(user);
+        if(u!=null){
+            return ResultUtil.success();
+        }
+        return ResultUtil.error(2,"修改失败");
+    }
     /**
      * 用户登录
      * @param user

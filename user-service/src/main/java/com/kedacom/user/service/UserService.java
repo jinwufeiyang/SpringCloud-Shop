@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by suxiongwei on 2017-12-29.
  */
 public interface UserService {
+    User updateUser(User user);
+
     User findByName(String name);
 
     User save(User user);

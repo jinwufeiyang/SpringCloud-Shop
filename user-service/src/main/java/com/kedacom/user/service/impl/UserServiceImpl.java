@@ -19,6 +19,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Override public User updateUser(User user){
+        //userRepository.findByName(name);
+        return userRepository.save(user);
+    }
+
     @Override public User findByName(String name) {
         return userRepository.findByName(name);
     }

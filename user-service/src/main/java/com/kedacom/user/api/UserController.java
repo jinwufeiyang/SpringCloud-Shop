@@ -52,6 +52,16 @@ public class UserController {
         return u;
     }
 
+    @PostMapping(value = "/updateuser")
+    public boolean updateuser(@RequestBody User user){
+        try{
+            userService.updateUser(user);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
     @PostMapping(value = "/insertUser")
     public boolean insertUser(@RequestBody User user){
         try{

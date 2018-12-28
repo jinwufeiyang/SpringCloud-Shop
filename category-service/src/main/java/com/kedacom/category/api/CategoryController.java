@@ -7,6 +7,7 @@ import com.kedacom.commons.api.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpHeaders;
@@ -30,6 +31,7 @@ import java.util.List;
 public class CategoryController {
     private final Logger logger = LoggerFactory.getLogger(CategoryController.class);
 
+    @Qualifier("discoveryClient")
     @Autowired
     private DiscoveryClient client;
 

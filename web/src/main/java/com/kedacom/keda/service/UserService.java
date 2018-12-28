@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient("user-service")
 public interface UserService {
 
+    @PostMapping("/user/updateuser")
+    User updateuser(@RequestBody User user);
+
     @PostMapping("/user/login")
     User login(@RequestBody User user);
 

@@ -31,8 +31,10 @@
 			<ul class="message-l">
 				<div class="topMessage">
 					<div class="menu-hd">
-						<a href="#" target="_top" class="h">亲，请登录</a>
-						<a href="#" target="_top">免费注册</a>
+						<div class="menu-hd" th:if="${session.userName == null}">
+							<a href="login.html" target="_top" class="h">亲，请登录</a>
+							<a href="register.html" target="_top">免费注册</a>
+						</div>
 						<input type="hidden" id="categoryId" th:value="${category.id}"/>
 					</div>
 				</div>
@@ -142,7 +144,12 @@
 							</script>
 
 							<div class="tb-booth tb-pic tb-s310">
-								<a href="/eureka-web/img/01.jpg"><img src="/eureka-web/img/01_mid.jpg" alt="细节展示放大镜特效" rel="/eureka-web/img/01.jpg" class="jqzoom" /></a>
+								<a href="/eureka-web/img/01.jpg">
+									<!--
+									<img src="/eureka-web/img/01_mid.jpg" alt="细节展示放大镜特效" rel="/eureka-web/img/01.jpg" class="jqzoom" />
+									-->
+									<img th:src="${category.img}" alt="细节展示放大镜特效" th:rel="${category.img}" class="jqzoom"/>
+								</a>
 							</div>
 							<ul class="tb-thumb" id="thumblist">
 								<li class="tb-selected">
@@ -197,14 +204,17 @@
 										<select data-am-selected="">
 											<option value="a">南阳市</option>
 											<option value="b">北京市</option>
+											<option value="c" th:text="${session.userName}"></option>
 										</select>
 										<select data-am-selected="">
 											<option value="a">宛城区</option>
 											<option value="b">海淀区</option>
+											<option value="c" th:text="${session.userName}"></option>
 										</select>
 										<select data-am-selected="">
 											<option value="a">长江路</option>
 											<option value="b">长城大厦</option>
+											<option value="c" th:text="${session.userName}"></option>
 										</select>
 									</div>
 									<div class="pay-logis">
@@ -268,7 +278,7 @@
 														-->
 														<div>
 															<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
-															<input id="text_box" name="" type="text" value="1" style="width:30px;" />
+															<input id="text_box" name="tjnumber" type="text" value="1" style="width:30px;" />
 															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
 														</div>
 													</div>
@@ -1338,6 +1348,8 @@
 			var path_name='/web/order/addOrder';
 			var categoryId = document.getElementById("categoryId").value;
 			var summoney = document.getElementById("price").value;
+			//var qrnumber = document.getElementById("tjnumber").value;
+			//var summoney = djmoney * qrnumber;
 
 			$.post(path_name,{categoryId:categoryId,summoney:summoney},function(result){
 				if(result.code==0){
